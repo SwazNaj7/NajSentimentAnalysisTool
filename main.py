@@ -8,14 +8,18 @@ def get_article(website):
         article.download()
         article.parse()
         article.nlp()
+        
         return article.summary
+    
     except Exception as e:
         print(f"Error: {e}")
         return None
 
 def analyze_sentiment(text):
     blob = TextBlob(text)
+    
     polarity_analysis = blob.sentiment.polarity
+    
     return polarity_analysis
 
 def get_sentiment_emoji(polarity_analysis):
@@ -40,25 +44,34 @@ def main():
         if user_input == 'article':
             website = input('Give article link: ')
             article_text = get_article(website)
+            
             if article_text is None:
                 print("Failed to retrieve the article. Please check the URL.")
+                
             else:
                 sentiment_score = analyze_sentiment(article_text)
                 sentiment_emoji = get_sentiment_emoji(sentiment_score)
+                
                 print(f"\n\n\nSentiment Analysis Score: {sentiment_score}")
                 print(f"Sentiment Rating: {sentiment_emoji}\n\n")
+                
         elif user_input == 'text':
             while True:
                 text = input("Enter your text, type 'main' to go back: ")
+                
                 if text.lower() == 'main':
                     break
+                
                 article_text = text
                 sentiment_score = analyze_sentiment(article_text)
                 sentiment_emoji = get_sentiment_emoji(sentiment_score)
+                
                 print(f"\n\n\nSentiment Analysis Score: {sentiment_score}")
                 print(f"Sentiment Rating: {sentiment_emoji}\n\n")
+                
         elif user_input == 'exit':
             sys.exit()
+            
         else:
             print("Invalid input. Please enter 'article', 'text', or 'exit'.")
 
