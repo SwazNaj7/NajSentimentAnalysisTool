@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Naj Sentiment Analysis</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+            }
+    
+            .pagetitle {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+    
+            h1 {
+                font-size: 3em;
+                color: #2d3e50;
+            }
+    
+            .text {
+                text-align: center;
+                margin-top: 20px;
+            }
+    
+            .navigation {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+    
+            .navigation a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #3498db;
+                font-size: 16px;
+                transition: color 0.3s ease;
+            }
+    
+            .navigation a:hover {
+                color: #2980b9;
+            }
+    
+            form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+            }
+    
+            input {
+                width: 300px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                font-size: 16px;
+                background-color: #ecf0f1;
+                margin-right: 10px;
+            }
+    
+            input:focus {
+                border: 2px solid #3498db;
+            }
+    
+            input::placeholder {
+                color: #95a5a6;
+            }
+    
+            button {
+                padding: 12px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                color: #fff;
+                background-color: #3498db;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+    
+            button:hover {
+                background-color: #2980b9;
+            }
+
+            .output {
+                margin-top: 20px;
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #2ecc71;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="pagetitle">
+            <h1>Naj Sentiment Analysis</h1>
+        </div>
+
+        <div class="text">
+            <form action="/" method="post">
+                <input type="hidden" name="input_type" value="article">
+                <input id="article-box" type="text" name="textbox" placeholder="Enter article URL...">
+                <button type="submit">Submit</button>
+            </form>
+            <p class="output" style="color: 
+            {% if 'Neutral' in output %}
+                #2980b9;
+            {% elif 'Negative' in output %}
+                red
+            {% elif 'Failed' in output %}
+                red
+            {% else %}
+                #2ecc71;
+            {% endif %};">
+            {{ output }}
+                </p>
+        </div>
+    </body>
+</html>
