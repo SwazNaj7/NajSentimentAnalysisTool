@@ -1,6 +1,5 @@
 from textblob import TextBlob
 from newspaper import Article
-import sys
 
 def get_article(website):
     try:
